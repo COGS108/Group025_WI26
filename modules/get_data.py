@@ -61,5 +61,3 @@ nhanes_files = [
 
 get_raw(nhanes_files, destination)
 
-demo = pd.read_sas(os.path.join(destination, "DEMO_J.XPT"))
-print(demo.head())
