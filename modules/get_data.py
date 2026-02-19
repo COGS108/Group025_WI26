@@ -1,6 +1,7 @@
 import os
 import requests
 from tqdm import tqdm
+import pandas as pd
 
 def get_raw(file_list, destination_directory):
     """
@@ -42,22 +43,23 @@ def get_raw(file_list, destination_directory):
         except Exception as e:
             print(f"An unexpected error occurred for {filename}: {e}")
 
-import os
-
-destination = "data/00-raw"
-
-# Make sure folder exists
-os.makedirs(destination, exist_ok=True)
-
-nhanes_files = [
-    {"url": "https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/DEMO_J.XPT", "filename": "DEMO_J.XPT"},
-    {"url": "https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/GHB_J.XPT", "filename": "GHB_J.XPT"},
-    {"url": "https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/GLU_J.XPT", "filename": "GLU_J.XPT"},
-    {"url": "https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/HIQ_J.XPT", "filename": "HIQ_J.XPT"},
-    {"url": "https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/SMQ_J.XPT", "filename": "SMQ_J.XPT"},
-    {"url": "https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/ALQ_J.XPT", "filename": "ALQ_J.XPT"},
-    {"url": "https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/PAQ_J.XPT", "filename": "PAQ_J.XPT"},
-]
-
-get_raw(nhanes_files, destination)
-
+def run_file():
+    import os
+    
+    destination = "data/00-raw"
+    
+    # Make sure folder exists
+    os.makedirs(destination, exist_ok=True)
+    
+    nhanes_files = [
+        {"url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/DEMO_J.xpt", "filename": "DEMO_J.XPT"},
+        {"url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/GHB_J.XPT", "filename": "GHB_J.XPT"},
+        {"url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/GLU_J.XPT", "filename": "GLU_J.XPT"},
+        {"url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/HIQ_J.XPT", "filename": "HIQ_J.XPT"},
+        {"url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/SMQ_J.XPT", "filename": "SMQ_J.XPT"},
+        {"url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/ALQ_J.XPT", "filename": "ALQ_J.XPT"},
+        {"url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/PAQ_J.XPT", "filename": "PAQ_J.XPT"},
+        {"url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/DIQ_J.XPT", "filename": "DIQ_J.XPT"}
+    ]
+    
+    get_raw(nhanes_files, destination)
